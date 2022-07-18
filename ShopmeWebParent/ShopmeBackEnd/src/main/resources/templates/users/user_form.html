@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head(${pageTitle})"></head>
+
+<body>
+
+<div class="container-fluid p-0">
+	<div th:replace="navigation :: nav_menu"></div>
+	&nbsp;
+	<div class="container-fluid">
+		<div class="card" style="max-width: 700px; margin: 0 auto;">
+			<div class="text-center mt-2">
+				<h2>Manage Users | [[${pageTitle}]]</h2>
+			</div>
+			<div class="card-body">
+				<form th:action="@{/users/save}" th:object="${user}" onsubmit="return checkEmailUnique(this)" method="POST" style="max-width: 700px; margin: 0 auto;"
+					  enctype="multipart/form-data">
+					<input type="hidden" th:field="*{id}">
+					<div class="form-group row mb-3">
+						<label class="col-sm-4 col-form-label">Email: </label>
+						<div class="col-sm-8">
+							<input type="email" class="form-control" th:field="*{email}" required minlength="8" maxlength="128" />
+						</div>
+					</div>
+					<div class="form-group row mb-3">
+						<label class="col-sm-4 col-form-label">Firstname: </label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" th:field="*{firstName}" required minlength="2" maxlength="45" />
+						</div>
+					</div>
+					<div class="form-group row mb-3">
+						<label class="col-sm-4 col-form-label">Lastname: </label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" th:field="*{lastName}" required minlength="2" maxlength="45" />
+						</div>
+					</div>
+					<div class="form-group row mb-3">
+						<label class="col-sm-4 col-form-label">Password: </label>
+						<div class="col-sm-8">
+							<input th:if="${user.id == null}" type="password" class="form-control" th:field="*{password}" required minlength="8" maxlength="45" />
+							<input th:if="${user.id != null}" type="password" class="form-control" th:field="*{password}" minlength="8" maxlength="45"
+								   placeholder="Please leave blank if you don't want to change password" />
+
+						</div>
+					</div>
+					<div class="form-group row mb-3">
+						<label class="col-sm-4 col-form-label">Roles: </label>
+						<div class="col-sm-8">
+							<th:block th:each="role : ${roles}">
+								<input class="m-2" type="checkbox" th:field="*{roles}" th:text="${role.name}" th:value="${role.id}">
+								- <small th:text="${role.description}"></small>
+								<br />
+							</th:block>
+						</div>
+					</div>
+					<div class="form-group row mb-3">
+						<label class="col-sm-4 col-form-label">Enabled: </label>
+						<div class="col-sm-8">
+							<input type="checkbox" th:field="*{enabled}" />
+						</div>
+					</div>
+					<div class="form-group row mb-3">
+						<label class="col-sm-4 col-form-label">Photos: </label>
+						<div class="col-sm-8">
+							<input type="hidden" th:field="*{photos}" />
+							<input type="file" id="imageFile" class="mb-2" name="image" accept="image/png, image/jpeg" />
+							<img id="thumbnail" class="img-fluid" alt="Photo preview" th:src="@{${user.photosImagePath}}">
+						</div>
+					</div>
+
+
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary m-2">Submit</button>
+						<button id="buttonCancel" type="submit" class="btn btn-secondary m-2">Cancel</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div th:replace="modal_fragments :: modal_dialog"></div>
+
+		<div th:replace="fragments :: page_footer"></div>
+	</div>
+</div>
+
+<script>
+	moduleUrl = "[[@{/users}]]";
+	function checkEmailUnique(form) {
+		url = "[[@{/users/check_email}]]";
+		userId = $("#id").val();
+		userEmail = $("#email").val();
+		csrfValue = $("input[name='_csrf']").val();
+		params = {id: userId, email: userEmail, _csrf: csrfValue};
+
+		$.post(url, params, function(response) {
+			if (response === "OK") {
+				form.submit();
+			} else if (response === "Duplicated") {
+				showWarningModal("There is another user with email - " + userEmail + " in DB");
+			} else {
+				showErrorModal("Unknown response from the server");
+			}
+		}).fail(function() {
+			showErrorModal("Couldn't connect to server");
+		});
+
+		return false;
+	}
+</script>
+<script th:src="@{/js/common_form.js}"></script>
+</body>
+</html>

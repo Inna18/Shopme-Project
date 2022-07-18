@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+<div th:fragment="nav_menu">
+    <form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
+        <input type="submit" />
+    </form>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand text-center" th:href="@{/}">
+            <img th:src="@{/images/ShopmeAdminSmall.png}" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavBar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="topNavBar">
+            <ul class="navbar-nav">
+                <li sec:authorize="hasAuthority('Admin')" th:replace="fragments :: nav_link('users', 'Users')"></li>
+                <li sec:authorize="hasAnyAuthority('Admin', 'Editor')" th:replace="fragments :: nav_link('categories', 'Categories')"></li>
+                <li sec:authorize="hasAnyAuthority('Admin', 'Editor')" th:replace="fragments :: nav_link('brands', 'Brands')"></li>
+                <li sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Editor', 'Shipper')" th:replace="fragments :: nav_link('products', 'Products')"></li>
+                <li sec:authorize="hasAnyAuthority('Admin', 'Salesperson')" th:replace="fragments :: nav_link('customers', 'Customers')"></li>
+                <li sec:authorize="hasAnyAuthority('Admin', 'Salesperson')" th:replace="fragments :: nav_link('shipping', 'Shipping')"></li>
+                <li sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Shipper')" th:replace="fragments :: nav_link('orders', 'Orders')"></li>
+                <li sec:authorize="hasAnyAuthority('Admin', 'Salesperson')" th:replace="fragments :: nav_link('report', 'Sales Report')"></li>
+                <li sec:authorize="hasAnyAuthority('Admin', 'Editor')" th:replace="fragments :: nav_link('articles', 'Articles')"></li>
+                <li sec:authorize="hasAnyAuthority('Admin', 'Editor')" th:replace="fragments :: nav_link('menus', 'Menus')"></li>
+                <li sec:authorize="hasAuthority('Admin')" th:replace="fragments :: nav_link('settings', 'Settings')"></li>
+                <li>
+                    <span class="fas fa-user fa-2x" style="color: silver"></span>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" sec:authentication="principal.fullname"></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/account}" id="account">Account</a></li>
+                        <li><a class="dropdown-item" href="" id="logoutLink">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>
