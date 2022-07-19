@@ -1,0 +1,9 @@
+
+c
+java:S62010"HReplace this instanceof check and cast with 'instanceof Integer integer'(ÕÊÙËüÿÿÿÿ
+c
+java:S62012"HReplace this instanceof check and cast with 'instanceof Boolean boolean'(Ğö­ùÿÿÿÿ
+]
+java:S62014"BReplace this instanceof check and cast with 'instanceof Long long'(ÇïíŸüÿÿÿÿ
+Z
+java:S1854Y"?Remove this useless assignment to local variable "columnIndex".(ÜÏÄïûÿÿÿÿ

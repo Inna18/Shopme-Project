@@ -1,0 +1,15 @@
+
+?
+java:S1604É"(Make this anonymous inner class a lambda(«Á±É
+7
+java:S1643a"Use a StringBuilder instead.(ž¹¹Èüÿÿÿÿ
+8
+java:S1643ˆ"Use a StringBuilder instead.(ž¹¹Èüÿÿÿÿ
+R
+java:S4973¼"<Strings and Boxed types should be compared using "equals()".(…¦¿`
+S
+java:S4973À"<Strings and Boxed types should be compared using "equals()".(ÍÉè×
+l
+java:S3655˜"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ñ¹Ö–ûÿÿÿÿ
+T
+java:S1155?">Use isEmpty() to check whether the collection is empty or not.(Žƒñ‰

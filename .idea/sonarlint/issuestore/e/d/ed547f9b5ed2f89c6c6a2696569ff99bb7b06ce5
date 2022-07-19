@@ -1,0 +1,11 @@
+
+a
+java:S1192-"FDefine a constant instead of duplicating this literal "Admin" 5 times.(Ã èÞûÿÿÿÿ
+b
+java:S1192."GDefine a constant instead of duplicating this literal "Editor" 3 times.(¶Áµ¯üÿÿÿÿ
+b
+java:S1192/"LDefine a constant instead of duplicating this literal "Salesperson" 3 times.(ÜÀÇ€
+_
+java:S1874"DRemove this use of "WebSecurityConfigurerAdapter"; it is deprecated.(Ã÷ ´ýÿÿÿÿ
+U
+java:S1161":Add the "@Override" annotation above this method signature(ò—Þëýÿÿÿÿ

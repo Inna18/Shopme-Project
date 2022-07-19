@@ -1,0 +1,15 @@
+
+f
+java:S1192A"KDefine a constant instead of duplicating this literal "categories" 3 times.(¶á‰Âúÿÿÿÿ
+c
+java:S1192a"HDefine a constant instead of duplicating this literal "message" 5 times.(Ü¸õ²úÿÿÿÿ
+k
+java:S1192c"UDefine a constant instead of duplicating this literal "redirect:/categories" 4 times.(ßÅú
+]
+java:S21841"@Cast one of the operands of this addition operation to a "long".(è½•¬8Å¼ÊşŸ0
+«
+java:S4449U"Annotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.(ëßøÿÿÿÿ
+[
+java:S4684S"@Replace this persistent entity with a simple POJO or DTO object.(”¯û„üÿÿÿÿ
+l
+java:S1128	"JRemove this unused import 'com.shopme.admin.user.service.UserServiceImpl'.(ï¸úÿÿÿÿ8«óİ 0

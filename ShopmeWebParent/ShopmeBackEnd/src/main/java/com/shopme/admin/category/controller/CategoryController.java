@@ -99,11 +99,6 @@ public class CategoryController {
         return "redirect:/categories";
     }
 
-    private String getRedirectUrlToAffectedCategory(Category category) {
-        String alias = category.getAlias();
-        return "redirect:/categories/page/1?sortField=id&sortDir=asc&keyword=" + alias;
-    }
-
     @GetMapping("/categories/edit/{id}")
     public String editCategory(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) {
         try {

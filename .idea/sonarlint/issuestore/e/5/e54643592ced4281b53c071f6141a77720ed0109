@@ -1,0 +1,11 @@
+
+W
+java:S4973X"<Strings and Boxed types should be compared using "equals()".(Ýÿ‡Ýúÿÿÿÿ
+k
+java:S3655b"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(˜Ãùõúÿÿÿÿ
+k
+java:S3655"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ã·ÀÙýÿÿÿÿ
+k
+java:S3655>"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(çÆ‡³ýÿÿÿÿ
+L
+java:S2589V"7Remove this expression which always evaluates to "true"(±ÙÇ

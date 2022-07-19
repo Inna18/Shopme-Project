@@ -1,0 +1,9 @@
+
+x
+java:S1488-"bImmediately return this expression instead of assigning it to the temporary variable "savedBrand".(¿¹“£
+
+java:S1488@"dImmediately return this expression instead of assigning it to the temporary variable "updatedBrand".(­Ê ­úÿÿÿÿ
+R
+java:S4973Y"<Strings and Boxed types should be compared using "equals()".(™Ì“
+r
+java:S36556"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(¬ž­§ýÿÿÿÿ8ØÀ‰¡0

@@ -9,8 +9,6 @@
         <div>
             <h2>Manage Brands</h2>
             <a th:href="@{/brands/add}" class="fas fa-user-plus fa-2x" style="color: gray; margin-right: 5px"></a>
-            &nbsp; | &nbsp;
-            <a th:href="@{/brands/export/csv}" class="fas fa-file-csv fa-2x" style="color: gray; margin-right: 5px"></a>
         </div>
         <br />
 
@@ -20,18 +18,20 @@
             <table class="table table-bordered table-hover table-responsive-xl">
                 <thead class="text-center">
                 <tr>
-                    <th th:replace="fragments :: column_link('brands', 'id', 'ID', 'none')"></th>
+                    <th class="hideable-column">
+                        <th th:replace="fragments :: column_link('brands', 'id', 'ID', 'tag')"></th>
+                    </th>
                     <th scope="col">Logo</th>
                     <th th:replace="fragments :: column_link('brands', 'name', 'Name', 'none')"></th>
-                    <th th:replace="fragments :: column_link('brands', 'categories', 'Categories', 'none')"></th>
+                    <th scope="col">Categories</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="brand : ${brands}" >
-                    <td class="text-center" th:text="${brand.id}"></td>
+                    <td class="hideable-column text-center" th:text="${brand.id}"></td>
                     <td class="text-center">
-                        <img class="img-fluid" alt="" style="width: 100px;" th:required="required" >
+                        <img class="img-fluid" th:src="@{${brand.logoPath}}" alt="" style="width: 100px;" th:required="required" >
                     </td>
                     <td th:text="${brand.name}"></td>
                     <td>
@@ -48,6 +48,23 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="less-details">
+            <div th:each="brand : ${brands}" class="row m-1">
+                <div class="col-4">
+                    <img class="img-fluid" th:src="@{${brand.logoPath}}" alt="" style="width: 100px;" th:required="required" >
+                </div>
+                <div class="col-8">
+                    <div th:text="${brand.name}"></div>
+                    <div>
+                        <span th:replace="fragments :: edit('/brand/edit/' + ${brand.id}, 'brand')"></span>
+                        <span th:replace="fragments :: delete('/brand/delete/' + ${brand.id}, 'brand', 'true', ${brand.id})"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="fragments :: pagination('brands', 'brands')"></div>
 
         <div th:replace="fragments :: delete_modal"></div>
 

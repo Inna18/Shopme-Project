@@ -45,15 +45,20 @@ public class Brand {
         this.logo = logo;
     }
 
+    public Brand(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     @Override
     public String toString() {
-        return "Brand [id=" + id + ", name=" + name + ", categories=" + categories + "]";
+        return this.name;
     }
 
     @Transient
     public String getLogoPath() {
         if (id == null || logo == null) return "/images/image-thumbnail.png";
 
-        return "/brand-images/" + this.id + "/" + this.logo;
+        return "/brand-logos/" + this.id + "/" + this.logo;
     }
 }
